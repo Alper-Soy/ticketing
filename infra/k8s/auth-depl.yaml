@@ -15,7 +15,6 @@ spec:
       containers:
         - name: auth
           image: soyalper/auth
-          imagePullPolicy: Always
 ---
 apiVersion: v1
 kind: Service
