@@ -1,13 +1,19 @@
 import { useState } from 'react';
+import axios from 'axios';
 
 const Signup = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 
-  const onSubmit = (e) => {
+  const onSubmit = async (e) => {
     e.preventDefault();
 
-    console.log(email, password);
+    const response = await axios.post('/api/users/signup', {
+      email,
+      password,
+    });
+
+    console.log(response.data);
   };
 
   return (
@@ -18,7 +24,6 @@ const Signup = () => {
         <input
           type='email'
           className='form-control'
-          name='email'
           value={email}
           onChange={(e) => setEmail(e.target.value)}
         />
@@ -28,7 +33,6 @@ const Signup = () => {
         <input
           type='password'
           className='form-control'
-          name='password'
           value={password}
           onChange={(e) => setPassword(e.target.value)}
         />
